@@ -79,6 +79,17 @@
       font-size: 20px;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       color: white;
+      text-align: start;
+    }
+
+    #upgrade u{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .description{
+      margin: 0;
+      padding: 0;
     }
 
     #upgrade:hover {
@@ -92,9 +103,11 @@
   <p id="contador">0 </p>
   <button id="myButton"><img src="mong.png" alt="mong" id="mong"></button>
   <button id="upgrade"><img src="manoelGomes.png" alt="bluepen" id="bluePen">
-    Manoel Gomes <br>
-    Quantidade: <br>
-    Preço:
+    <span class="description">
+      <u>Manoel Gomes</u>
+      <p>Quantidade: <span id="quant">0</span></p> 
+      <p>Preço: <span id="price">10</span></p>
+    </span>
   </button>
   
 
@@ -103,12 +116,20 @@
   <script>
     // Seleciona o botão e a div pelo ID
     const button = document.querySelector('#myButton');
+    const upgrade = document.querySelector('#upgrade')
     const p = document.querySelector('#contador');
-    const img = document.querySelector('#mong')
+    const quant = document.querySelector('#quant')
+    const img = document.querySelector('#mong');
+    const bluepen = document.querySelector('#bluepen');
+    const preco = document.querySelector('#price')
 
     // Variável para controlar a posição da div
 
     let contador = 0;
+    let idade = 0;
+    let price = 10;
+
+    
 
     p.style.backgroundColor='lightgreen'
     // Adiciona um evento de clique ao botão
@@ -124,16 +145,33 @@
         p.style.backgroundColor= 'lightgreen';
       }
 
-      if(contador>='50'){
+      if(contador>='500'){
         img.src='mongHat1.png'
       }
 
-      if(contador>='100'){
+      if(contador>='2500'){
         img.src='mongHat2.png'
       }
 
-      if(contador>='200'){
+      if(contador>='5000'){
         img.src='mongHat3.png'
+        
+      }
+    });
+
+    upgrade.addEventListener('click', () =>{
+
+      if (contador>=price){
+
+      idade+=1;
+      quant.textContent = idade;
+      contador=p.textContent-price;
+
+      price*=2;
+      preco.textContent=price;
+      
+
+
       }
     });
 
