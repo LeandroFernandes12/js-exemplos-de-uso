@@ -125,12 +125,13 @@
 
     // Variável para controlar a posição da div
 
+    let give = null;
     let contador = 0;
+    let persec = 0;
     let idade = 0;
     let price = 10;
 
     
-
     p.style.backgroundColor='lightgreen'
     // Adiciona um evento de clique ao botão
     button.addEventListener('click', () =>{
@@ -159,6 +160,8 @@
       }
     });
 
+// ________________________________________________________________________________________________
+// Upgrades
     upgrade.addEventListener('click', () =>{
 
       if (contador>=price){
@@ -166,14 +169,22 @@
       idade+=1;
       quant.textContent = idade;
       contador=p.textContent-price;
+      p.textContent=contador
 
       price*=2;
       preco.textContent=price;
-      
 
-
+        function startGive() {
+            give = setInterval(() => {
+                contador+=Math.ceil(1);
+                p.textContent = contador;
+            }, 1000);
+          }
+      upgrade.addEventListener('click', startGive);
       }
     });
+
+
 
   </script>
 </body>
