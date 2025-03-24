@@ -54,6 +54,33 @@
     const reset=document.querySelector('#resetButton');
 
     let count=0;
+    let time=null;
+    let autoCount;
+
+    function startTimer() {
+    if (!time) { // Evita múltiplos timers
+        time = setInterval(() => {
+            count++;
+            timer.textContent = count;
+        }, 1000);
+    }
+}
+    function pauseTimer() {
+      clearInterval(time);
+      time = null;
+    }
+
+    function resetTimer() {
+      clearInterval(time);
+      time = null;
+      count = 0;
+      timer.textContent = count;
+    }
+
+    // Adiciona eventos aos botões
+    startButton.addEventListener('click', startTimer);
+    pauseButton.addEventListener('click', pauseTimer);
+    resetButton.addEventListener('click', resetTimer);
 
 
   </script>

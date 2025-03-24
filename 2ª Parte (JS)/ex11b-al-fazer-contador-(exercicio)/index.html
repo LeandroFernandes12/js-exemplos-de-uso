@@ -55,8 +55,18 @@
       "Acredite que você pode e você já está no meio do caminho. – Theodore Roosevelt",
       "Não importa o quão devagar você vá, desde que você não pare. – Confúcio"
     ];
+    const button=document.querySelector('#newQuoteButton')
+    const quoteElement=document.getElementById('quote');
 
-       // 1ª Digitação (Resolva aqui o exercício)
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random()*quotes.length)
+      quoteElement.textContent=quotes[randomIndex]
+    }
+    
+
+    button.addEventListener('click',generateQuote);
+
+    generateQuote();
 
 
   </script>
